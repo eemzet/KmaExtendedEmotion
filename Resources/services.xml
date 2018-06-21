@@ -13,5 +13,9 @@
             <argument id="service_container" type="service"/>
             <tag name="shopware.event_subscriber"/>
         </service>
+
+        <service class="KmaExtendedEmotion\Services\EmotionDataService" id="kma_extended_emotion.services.emotion_data_service">
+            <argument id="dbal_connection" type="service"/>
+        </service>
     </services>
 </container>

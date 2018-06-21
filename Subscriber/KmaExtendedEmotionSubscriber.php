@@ -81,6 +81,7 @@ class KmaExtendedEmotionSubscriber implements SubscriberInterface
         {
             $attributes = $view->getAssign("sCustomPage")["attribute"];
 
+
             if($attributes != NULL)
             {
                 $emotionAbove = $this->selectEmotionData($view->getAssign("sCustomPage")["attribute"]["kma_cms_static_emotion_above"]);
@@ -97,6 +98,7 @@ class KmaExtendedEmotionSubscriber implements SubscriberInterface
 
     private function selectEmotionData($attribute)
     {
+
         try
         {
             $attribute = explode("|", $attribute);
@@ -106,7 +108,7 @@ class KmaExtendedEmotionSubscriber implements SubscriberInterface
             $placeholders = str_repeat ('?, ',  count ($attribute) - 1) . '?';
 
             return Shopware()->Db()->query("SELECT id, device
-				FROM s_emotion 
+				FROM s_emotion
 				WHERE id IN (".$placeholders.")
 				AND active = 1
 				ORDER BY position ASC", $attribute)->fetchAll();
